@@ -38,7 +38,7 @@ export async function writeToSheet(spreadsheetId: string, values: string[][]) {
 // Asynchronous function to read data from a Google Sheet.
 export async function readSheet(spreadsheetId: string) {
 	const sheets = google.sheets({ version: 'v4', auth });
-	const range = 'Sheet1!A1:G10'; // Specifies the range to read.
+	const range = 'Sheet1!C:C'; // Specifies the range to read.
 
 	try {
 		const response = await sheets.spreadsheets.values.get({
