@@ -63,7 +63,8 @@
 						'Content-Type': 'application/json'
 					}
 				});
-				await resp.json();
+				const res = await resp.json();
+				alert(res.studentData);
 				alert(`Added ${decodedText} to the sheet`);
 			}
 		} catch (error) {

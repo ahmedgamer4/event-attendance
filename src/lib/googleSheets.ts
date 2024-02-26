@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import creds from '../../creds.json';
+import creds from '../../sheets-creds.json';
 
 // Initializes the Google APIs client library and sets up the authentication using service account credentials.
 const auth = new google.auth.GoogleAuth({
@@ -38,7 +38,7 @@ export async function writeToSheet(spreadsheetId: string, values: string[][]) {
 // Asynchronous function to read data from a Google Sheet.
 export async function readSheet(spreadsheetId: string) {
 	const sheets = google.sheets({ version: 'v4', auth });
-	const range = 'Sheet1!C:C'; // Specifies the range to read.
+	const range = 'Sheet1!A:G'; // Specifies the range to read.
 
 	try {
 		const response = await sheets.spreadsheets.values.get({

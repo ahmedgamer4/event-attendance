@@ -16,7 +16,7 @@ export const GET = (async ({ url }) => {
 	const studentsDataSheetFrom = await readSheet(sheetFrom);
 	if (!studentsDataSheetFrom) return error(500, 'Found no students');
 	for (const student of studentsDataSheetFrom) {
-		if (code === student[0]) {
+		if (code === student[2]) {
 			inOriginalSheet = true;
 		}
 	}
@@ -26,7 +26,7 @@ export const GET = (async ({ url }) => {
 	if (!studentsDataSheetTo) studentsDataSheetTo = [];
 
 	for (const student of studentsDataSheetTo) {
-		if (code == student[0]) {
+		if (code == student[2]) {
 			found = true;
 		}
 	}
@@ -52,5 +52,5 @@ export const POST = (async ({ request }) => {
 	if (!studentData) return error(500, 'Found no students');
 	await writeToSheet(sheetTo, [studentData]);
 
-	return json({ message: 'Success', statusCode: 201 }, { status: 201 });
+	return json({ message: 'Success', statusCode: 201, studentData }, { status: 201 });
 }) satisfies RequestHandler;
